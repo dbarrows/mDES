@@ -1,0 +1,39 @@
+//Author	Dexter Barrows
+
+File list
+*********************************************************
+mDES.c		- The C99 source file
+README		- this README
+input.txt	- sample input
+*********************************************************
+
+Instructions
+*************************************************************************************************************************
+
+mDES takes 4 command line arguments (only tested in this order):
+----------------------------------------------------------------
+
+-e / -d							-> tells the program to encrypt or decrypt
+plaintext as hex characters		-> the plaintext or ciphertext depending on the previous -e/-d argument
+-k								-> indicates the next argument is the 8-bit key to use
+key								-> the 8-bit encryption key used to generate the round keys, as two hex characters
+
+Note that the input is assumed to be multiples of 8-bit blocks (two hex characters) and already padded if necessary.
+
+
+Examples:
+---------
+
+Input:		>> ./mDES -e 0123456789abcdef -k 4d         -> tells the program to encrypt "0123456789abcdef" using key "4d"
+Output:     Set to encrypt   							-> running in encryption mode
+			Plaintext:		0x0123456789abcdef			-> plaintext in hex
+			Key: 			0x4d 						-> key used in hex
+			Ciphertext: 	0x231404152de00222			-> resulting ciphertext in hex
+
+Input:		>> ./mDES -d 231404152de00222 -k 4d			-> tells the program to decrypt "231404152de00222" using key "4d" 
+Output:		Set to decrypt								-> running in encryption mode
+			Ciphertext:	0x231404152de00222				-> ciphertext in hex
+			Key: 		0x4d 							-> key used in hex
+			Plaintext: 	0x0123456789abcdef				-> resulting plaintext in hex
+
+*************************************************************************************************************************
